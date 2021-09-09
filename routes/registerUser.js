@@ -15,12 +15,12 @@ router.post('/',async(req,res)=>{
 //Validating the user input data before uploading to the database
 
    const {error} = registerValidation(req.body);
-   if(error) return res.status(400).json({error:error.details[0].message})
+   if(error) return res.status(400).json({msg:error.details[0].message})
 
 //Checking if user name and password already exist
     const emailExist = await Users.findOne({email:req.body.email});
     const userExist = await Users.findOne({userName:req.body.userName});
-    if(emailExist) return res.status(400).json({msg:"email exist"})
+    if(emailExist) return res.status(400).json({msg:"email already  exist"})
     if(userExist) return res.status(400).json({msg:"User Name already exist"})
 //HASH password
 

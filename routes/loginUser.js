@@ -10,7 +10,7 @@ router.post('/', (req,res)=>{
         Users.findOne({userName: req.body.userName},(err, result)=>{
             if(err) res.status(500).json({msg:err})
             if(result===null){
-                res.status(403).json("no data")
+                res.status(403).json({msg:"no data"})
             }else{
                 if(result.userName === req.body.userName){
                     if(result.password === req.body.password){

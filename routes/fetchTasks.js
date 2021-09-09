@@ -6,16 +6,11 @@ const verify  = require("./verifyToken");
 //////////////get a perticular user data////////////////////
 router.get('/:userName',verify,(req,res)=>{
     Tasks.find({userName:req.params.userName}).then(result=>{
-        res.status(200).json({
-            tasks:result,
-
-        })
+        res.status(200).json({msg:result,})
     
     }).catch(err=>{
         console.log(err);
-        res.status(500).json({
-            error:err
-        })
+        res.status(500).json({msg:err})
     })
 })
 
@@ -27,12 +22,9 @@ router.put('/:id',verify,async(req,res)=>{
         task.time = req.body.time
         task.body = req.body.body
         const saved = await task.save();
-        res.json(saved);
+        res.json({msg:saved});
     }catch(e){
-        res.json({
-            msg:"error",
-            error:e
-        })
+        res.json({msg:"error"+e,})
     }
 })
 
@@ -41,21 +33,10 @@ router.delete('/:id',verify,async(req,res)=>{
     try{
         const task = await Tasks.findById(req.params.id);
         const removed = await task.remove();
-        res.json({
-            msg:"Removed Successfully"  ,
-            and:removed
-        })
+        res.json({msg:"Removed Successfully"})
     }catch(e){
-        res.json({
-            msg:"error",
-            error:e
-        })
+        res.json({msg:"error" + e})
     }
 })
-
-
-
-
-
 
 module.exports = router;
