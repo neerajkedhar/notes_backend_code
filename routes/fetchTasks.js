@@ -4,7 +4,7 @@ const router = express.Router();
 const verify  = require("./verifyToken");
 
 //////////////get a perticular user data////////////////////
-router.get('/:userName',verify,(req,res)=>{
+router.get('/:userName',(req,res)=>{
     Tasks.find({userName:req.params.userName}).then(result=>{
         res.status(200).json({msg:result,})
     
