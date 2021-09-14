@@ -5,7 +5,7 @@ const Users = require('./models/userDataModel');
 const bodyparser = require('body-parser');
 
 ////////////MonogodbInitialization/////////////////
-mongoose.connect('mongodb+srv://neeraj:neeraj@cluster0.thrwg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://neeraj:putidhere@cluster0.thrwg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 mongoose.connection.on('error',err=>{
     console.log('connection faild'+ err)
 })
